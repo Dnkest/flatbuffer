@@ -1,0 +1,40 @@
+namespace property_tree;
+
+enum PropertyType : byte {
+  string,
+  integer,
+  float,
+  boolean
+}
+
+table StringValue {
+  value: string;
+}
+
+table IntegerValue {
+  value: int;
+}
+
+table FloatValue {
+  value: float;
+}
+
+table BooleanValue {
+  value: bool;
+}
+
+union Value {
+  string_value: StringValue,
+  integer_value: IntegerValue,
+  float_value: FloatValue,
+  boolean_value: BooleanValue
+}
+
+table Property {
+  name: string;
+  value: Value;
+  type: PropertyType;
+  sub_properties: [Property];
+}
+
+root_type Property;
